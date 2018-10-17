@@ -2,16 +2,16 @@ package ru.job4j.calculate;
 
 /**
 * Вывод строки в консоль
-* @param args - args.
-* @autor Dmitry Olekhnovich (wride@yandex.ru)
+* 
+* 
 */
 
 
 public class Calculate{
 	
 	/**
-	* Metod SOUP
-	* @return Hello world.
+	* Metod SOUt
+	* 
 	*/
 	
 	public static void main(String[] args) {

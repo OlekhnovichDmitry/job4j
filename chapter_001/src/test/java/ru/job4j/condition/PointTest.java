@@ -9,7 +9,7 @@ public class PointTest {
      * test Расстояния между точками.
      */
     @Test
-    public void PointRasst() {
+    public void pointRasst() {
         Point a = new Point(0, 1);
         Point b = new Point(2, 5);
 

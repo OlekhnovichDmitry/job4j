@@ -19,7 +19,14 @@ public class MaxTest {
     }
 
     @Test
-    public void whenThreeLessThree() {
+    public void whenSecondLessFirst() {
+        Max maxim = new Max();
+        int result = maxim.max(2, 1);
+        assertThat(result, is(2));
+    }
+
+    @Test
+    public void whenSecondEqualFirst() {
         Max maxim = new Max();
         int result = maxim.max(3, 3);
         assertThat(result, is(3));

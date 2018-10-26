@@ -9,11 +9,24 @@ public class Max {
      * Max из двух чисел.
      * @param first первое число.
      * @param second второе число.
-     * @max Ответ.
+     * @return Ответ.
      */
     public int max(int first, int second) {
 
-        int max = (first > second) ? first : second;
-        return max;
+        return (first > second) ? first : second;
+
+    }
+    /**
+     * Max из трех чисел.
+     * @param first первое число.
+     * @param second второе число.
+     * @param third второе число.
+     * @return Ответ.
+     */
+    public int maxThree(int first, int second, int third) {
+        int temp = this.max(first, second);
+        temp = this.max(third, temp);
+
+        return temp;
     }
 }

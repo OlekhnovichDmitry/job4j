@@ -21,12 +21,9 @@ public class Max {
      * @param first первое число.
      * @param second второе число.
      * @param third второе число.
-     * @return Ответ.
+     * @return Вызов метода в методе.
      */
     public int maxThree(int first, int second, int third) {
-        int temp = this.max(first, second);
-        temp = this.max(third, temp);
-
-        return temp;
+    return max(max(first, second), max(second, third));
     }
 }

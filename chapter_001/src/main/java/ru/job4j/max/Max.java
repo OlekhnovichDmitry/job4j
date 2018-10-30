@@ -24,6 +24,6 @@ public class Max {
      * @return Вызов метода в методе.
      */
     public int maxThree(int first, int second, int third) {
-    return max(max(first, second), max(second, third));
+            return max(max(first, second), third);
     }
 }

@@ -38,7 +38,7 @@ public class FindLoopTest {
 	 * Test поиск несуществующего элемента.
 	 */
 	@Test
-	public void WhenArrayHasNotFound() {
+	public void whenArrayHasNotFound() {
 		FindLoop find = new FindLoop();
 		int[] input = new int[] {1, 2, 3, 4};
 		int value = 5;

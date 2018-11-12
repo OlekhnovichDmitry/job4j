@@ -20,7 +20,7 @@ public class ArrayDuplicateTest {
         String[] input = new String[] {"Привет", "Мир", "Привет", "Супер", "Мир"};
         String[] result = duplicate.remove(input);
         String[] expect = new String[] {"Привет", "Мир", "Супер"};
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
 
     }
     /**
@@ -32,7 +32,7 @@ public class ArrayDuplicateTest {
         String[] input = new String[] {"Привет", "Мир", "Привет", "Супер", "Мир", "Год", "Мир", "Лорд"};
         String[] result = duplicate.remove(input);
         String[] expect = new String[] {"Привет", "Мир", "Лорд", "Супер", "Год"};
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
 
 }

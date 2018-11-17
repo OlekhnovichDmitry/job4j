@@ -4,7 +4,7 @@ import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 
 /**
- * //TODO add comments.
+ * //Реализовать логику метода isWin , где result(true) = победе.
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
@@ -80,7 +80,7 @@ public class Logic {
                     countRow++;
                 }
             }
-            if (countCol == 5 || countRow == 5) {
+            if (countCol == table.length || countRow == table.length) {
                 result = true;
                 break;
             }

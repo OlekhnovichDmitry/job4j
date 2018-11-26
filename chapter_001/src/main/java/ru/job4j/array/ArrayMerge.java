@@ -1,4 +1,5 @@
 package ru.job4j.array;
+import java.util.Arrays;
 /**
  * merge massive. объединяем и разделяем массивы.
  *
@@ -19,24 +20,24 @@ public class ArrayMerge {
     public int[] arrayMerge(int[] first, int[] second) {
         int len = first.length + second.length;
         int[] third = new int[len];
-        int arr1 = 0;
-        int arr2 = 0;
+        int arrFirstCount = 0;
+        int arrSecondCount = 0;
         for (int i = 0; i < len; i++) {
-            if (arr1 < first.length && arr2 < second.length) {
-                if (first[arr1] < second[arr2]) {
-                    third[i] = first[arr1];
-                    arr1++;
+            if (arrFirstCount < first.length && arrSecondCount < second.length) {
+                if (first[arrFirstCount] < second[arrSecondCount]) {
+                    third[i] = first[arrFirstCount];
+                    arrFirstCount++;
                 } else {
-                    third[i] = second[arr2];
-                    arr2++;
+                    third[i] = second[arrSecondCount];
+                    arrSecondCount++;
                 }
             } else {
-                if (arr1 < first.length) {
-                    third[i] = first[arr1];
-                    arr1++;
+                if (arrFirstCount < first.length) {
+                    third[i] = first[arrFirstCount];
+                    arrFirstCount++;
                 } else {
-                    third[i] = second[arr2];
-                    arr2++;
+                    third[i] = second[arrSecondCount];
+                    arrSecondCount++;
                 }
             }
         }
@@ -44,35 +45,51 @@ public class ArrayMerge {
     }
 
     /**
-     * Входящий массив делим пополам и возвращаем двумерный массив с примерно равными половинами.
+     * Входящий массив сортируем по убыванию делим пополам
+     * и возвращаем двумерный массив с примерно равными половинами.
      *
-     * @param array - массив который надо поделить.
+     * //@param array - массив который надо поделить.
      *
-     * @return arrFrst - возвращаем двумерный массив.
+     * @return arr - возвращаем двумерный массив.
      */
-
     public int[][] arrayDivideTwo(int[] array) {
-        int[][] arrFrst = new int[2][array.length - 1];
-        int arr1 = 0;
-        int arr1Sum = array[array.length - 1];
 
-        int arr2 = 0;
-        int arr2Sum = array[array.length - 2];
-
-        arrFrst[0][0] = array[array.length - 1];
-        arrFrst[1][0] = array[array.length - 2];
-
-        for (int i = array.length - 3; i >= 0; i--) {
-            if (arr1Sum < arr2Sum) {
-                arr1++;
-                arrFrst[0][arr1] = array[i];
-                arr1Sum += array[i];
-            } else {
-                arr2++;
-                arrFrst[1][arr2] = array[i];
-                arr2Sum += array[i];
+        for (int index = 0; index != array.length; index++) {
+            for (int j = 0; j != array.length - index - 1; j++) {
+                if (array[j] < array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
             }
         }
-        return arrFrst;
+
+        int[] arrLeft = new int[array.length - 1];
+        int arrLeftCount = 0;
+        int arrLeftSum = array[0];
+
+        int[] arrRight = new int[array.length - 1];
+        int arrRightCount = 0;
+        int arrRightSum = array[1];
+
+        arrLeft[0] = array[0];
+        arrRight[0] = array[1];
+
+        for (int i = 2; i != array.length; i++) {
+            if (arrLeftSum < arrRightSum) {
+                arrLeftCount++;
+                arrLeft[arrLeftCount] = array[i];
+                arrLeftSum += array[i];
+
+            } else {
+                arrRightCount++;
+                arrRight[arrRightCount] = array[i];
+                arrRightSum += array[i];
+            }
+        }
+        int[][] arr = new int[2][];
+        arr[0] = Arrays.copyOf(arrLeft, arrLeftCount + 1);
+        arr[1] = Arrays.copyOf(arrRight, arrRightCount + 1);
+        return arr;
     }
 }

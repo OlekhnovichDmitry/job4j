@@ -32,9 +32,9 @@ public class ArrayMergeTest {
     @Test
     public void whenArray10ElemDivideTwoArr() {
         ArrayMerge arrDivide = new ArrayMerge();
-        int[] arrFrst = new int[] {3, 4, 6, 8, 9, 11, 12, 20, 30, 50};
+        int[] arrFrst = new int[] {50, 4, 30, 6, 8, 11, 12, 20, 9, 3};
         int[][] result = arrDivide.arrayDivideTwo(arrFrst);
-        int[][] expect = new int[][] {{50, 11, 9, 4, 3, 0, 0, 0, 0}, {30, 20, 12, 8, 6, 0, 0, 0, 0}};
+        int[][] expect = new int[][] {{50, 11, 9, 4, 3}, {30, 20, 12, 8, 6}};
         assertThat(result, is(expect));
 
     }

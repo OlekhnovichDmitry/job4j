@@ -43,53 +43,46 @@ public class ArrayMerge {
         }
         return third;
     }
-
     /**
-     * Входящий массив сортируем по убыванию делим пополам
-     * и возвращаем двумерный массив с примерно равными половинами.
+     * Входящий массив сортируем по возрастанию и делим пополам
+     * и возвращаем два массив с примерно равными половинами.
+     * Их опять сортируем по возрастанию и возвращаем два массива
      *
-     * //@param array - массив который надо поделить.
+     * @param array - массив который надо поделить.
      *
-     * @return arr - возвращаем двумерный массив.
+     * @return pair - возвращаем двa массива.
      */
-    public int[][] arrayDivideTwo(int[] array) {
-
-        for (int index = 0; index != array.length; index++) {
-            for (int j = 0; j != array.length - index - 1; j++) {
-                if (array[j] < array[j + 1]) {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
-        }
+    public Pair arrayDivideTwo(int[] array) {
+        BubbleSort arrSort = new BubbleSort();
+        array = arrSort.sort(array);
 
         int[] arrLeft = new int[array.length - 1];
-        int arrLeftCount = 0;
-        int arrLeftSum = array[0];
+        int arrLeftCount = -1;
+        int arrLeftSum = 0;
 
         int[] arrRight = new int[array.length - 1];
-        int arrRightCount = 0;
-        int arrRightSum = array[1];
+        int arrRightCount = -1;
+        int arrRightSum = 0;
 
-        arrLeft[0] = array[0];
-        arrRight[0] = array[1];
-
-        for (int i = 2; i != array.length; i++) {
+        for (int i = array.length - 1; i >= 0; i--) {
             if (arrLeftSum < arrRightSum) {
                 arrLeftCount++;
                 arrLeft[arrLeftCount] = array[i];
                 arrLeftSum += array[i];
-
             } else {
                 arrRightCount++;
                 arrRight[arrRightCount] = array[i];
                 arrRightSum += array[i];
             }
         }
-        int[][] arr = new int[2][];
-        arr[0] = Arrays.copyOf(arrLeft, arrLeftCount + 1);
-        arr[1] = Arrays.copyOf(arrRight, arrRightCount + 1);
-        return arr;
+        Pair pair = new Pair();
+        pair.left  = arrSort.sort(Arrays.copyOf(arrLeft, arrLeftCount + 1));
+        pair.right = arrSort.sort(Arrays.copyOf(arrRight, arrRightCount + 1));
+        return pair;
     }
 }
+
+class Pair {
+    int[] left;
+    int[] right;
+        }

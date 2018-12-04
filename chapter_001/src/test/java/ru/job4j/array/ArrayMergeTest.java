@@ -23,20 +23,20 @@ public class ArrayMergeTest {
         int[] result = arrMerge.arrayMerge(arrFrst, arrScd);
         int[] expect = new int[] {1, 3, 4, 5, 6, 8, 9, 10, 11, 12};
         assertThat(result, is(expect));
-
     }
     /**
-     *  TEST из одного отсортированного массива возвращаем двумерный массив с примерно равной суммой
-     *  в правой и левой его части.
+     *  TEST из одного отсортированного массива возвращаем два массива с примерно равными суммами
      */
     @Test
     public void whenArray10ElemDivideTwoArr() {
         ArrayMerge arrDivide = new ArrayMerge();
-        int[] arrFrst = new int[] {50, 4, 30, 6, 8, 11, 12, 20, 9, 3};
-        int[][] result = arrDivide.arrayDivideTwo(arrFrst);
-        int[][] expect = new int[][] {{50, 11, 9, 4, 3}, {30, 20, 12, 8, 6}};
-        assertThat(result, is(expect));
+        int[] arrFirst = new int[] {50, 4, 30, 6, 8, 11, 12, 20, 9, 3};
+        Pair result = arrDivide.arrayDivideTwo(arrFirst);
 
+        Pair expect = new Pair();
+        expect.left =new int[] {3, 4, 9, 11, 20, 30};
+        expect.right = new int[] {6, 8, 12, 50};
+        assertThat(result.left, is(expect.left));
+        assertThat(result.right, is(expect.right));
     }
-
 }

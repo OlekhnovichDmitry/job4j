@@ -8,6 +8,6 @@ package ru.job4j.profession;
  */
 
 public class Engineer extends Profession {
-    House house;
+    private House house;
 }
 

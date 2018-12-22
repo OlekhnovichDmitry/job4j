@@ -7,7 +7,7 @@ package ru.job4j.profession;
  * @since 0.1
  */
 public class Doctor extends Profession {
-    Patient patient;
+    private Patient patient;
 
     public Diagnose DiagnoseHeal(Patient patient) {
         return null;
@@ -15,5 +15,5 @@ public class Doctor extends Profession {
 }
 
 class Diagnose {
- public String name = "tor";
+ private String name = "tor";
 }

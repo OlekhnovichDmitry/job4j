@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -52,9 +53,7 @@ public class Tracker {
      * Метод возвращающий все заявки.
      */
     public Item[] findAll() {
-
-        System.arraycopy(items, 0, items, 0, this.position);
-        return items;
+        return Arrays.copyOf(items, this.position);
     }
 
     /**

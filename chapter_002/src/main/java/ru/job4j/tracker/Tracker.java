@@ -28,7 +28,7 @@ public class Tracker {
      * @param item новая заявка.
      */
     public Item add(Item item) {
-        //item.setId(this.generateId());
+        item.setId(this.generateId());
         this.items[this.position++] = item;
         return item;
     }
@@ -39,9 +39,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if(item != null && item.getId().equals(id)) {
-                result = item;
+        for (int index = 0; index != this.position; index++) {
+            if (items[index] != null && items[index].getId().equals(id)) {
+                result = items[index];
                 break;
             }
         }
@@ -52,11 +52,9 @@ public class Tracker {
      * Метод возвращающий все заявки.
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+
+        System.arraycopy(items, 0, items, 0, this.position);
+        return items;
     }
 
     /**
@@ -71,9 +69,14 @@ public class Tracker {
     /**
      *  Метод редактирования заявок по ID
      */
-    public void replace(String id, Item item) {
-        int index = findIndexItem(id);
-        this.items[index] = item;
+    public boolean replace(String id, Item item) {
+        boolean rightId = false;
+        int indexId = findIndexItem(id);
+        if (indexId != -1) {
+            this.items[indexId] = item;
+            rightId = true;
+        }
+        return rightId;
     }
 
     /**
@@ -82,9 +85,14 @@ public class Tracker {
      *  Далее сместить все значения справа от удаляемого элемента
      *  - на одну ячейку влево с помощью System.arrayCopy();
      */
-    public void delete(String id) {
-        int index = findIndexItem(id);
-        System.arraycopy(items,index + 1, items, index, this.position - index);
+    public boolean delete(String id) {
+        boolean rightId = false;
+        int indexId = findIndexItem(id);
+        if (indexId != -1) {
+            System.arraycopy(items, indexId + 1, items, indexId, this.position - indexId);
+            rightId = true;
+        }
+        return rightId;
     }
 
     /**
@@ -94,14 +102,14 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         Item[] result = new Item[this.position];
-        int index = 0;
-        for (Item item : items) {
-            if(item != null && item.getName().equals(key)) {
-                result[index] = item;
-                index++;
+        int indexId = 0;
+        for (int index = 0; index != this.position; index++) {
+            if (items[index].getName().equals(key)) {
+                result[indexId] = items[index];
+                indexId++;
             }
         }
-        System.arraycopy(result,0, result, 0, index);
+        System.arraycopy(result, 0, result, 0, indexId);
         return result;
     }
 
@@ -110,15 +118,15 @@ public class Tracker {
      *  находит ячейку в массиве по id.
      *  @return index -возвращает индекс ячейки.
      */
-    private int findIndexItem(String id){
-        int index = 0;
-        for (Item item : items) {
-            if(item.getId().equals(id)) {
+    private int findIndexItem(String id) {
+        int indexId = -1;
+        for (int index = 0; index != this.position; index++) {
+            if (items[index].getId().equals(id)) {
+                indexId = index;
                 break;
             }
-            index++;
         }
-        return index;
+        return indexId;
     }
 
 }

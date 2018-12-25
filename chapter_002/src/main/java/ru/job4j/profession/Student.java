@@ -6,6 +6,6 @@ package ru.job4j.profession;
  * @version $Id$
  * @since 0.1
  */
-public class Student{
+public class Student {
     private String name;
 }

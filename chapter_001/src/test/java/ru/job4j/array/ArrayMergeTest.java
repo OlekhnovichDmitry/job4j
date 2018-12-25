@@ -34,7 +34,7 @@ public class ArrayMergeTest {
         Pair result = arrDivide.arrayDivideTwo(arrFirst);
 
         Pair expect = new Pair();
-        expect.left =new int[] {3, 4, 9, 11, 20, 30};
+        expect.left = new int[] {3, 4, 9, 11, 20, 30};
         expect.right = new int[] {6, 8, 12, 50};
         assertThat(result.left, is(expect.left));
         assertThat(result.right, is(expect.right));

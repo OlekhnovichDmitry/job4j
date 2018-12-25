@@ -7,6 +7,6 @@ package ru.job4j.profession;
  * @since 0.1
  */
 
-public class House{
+public class House {
     private String name;
 }

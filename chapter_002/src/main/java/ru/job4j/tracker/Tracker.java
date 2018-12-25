@@ -73,6 +73,7 @@ public class Tracker {
         int indexId = findIndexItem(id);
         if (indexId != -1) {
             this.items[indexId] = item;
+            item.setId(id);
             rightId = true;
         }
         return rightId;

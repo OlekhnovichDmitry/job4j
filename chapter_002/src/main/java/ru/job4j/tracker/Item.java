@@ -24,6 +24,10 @@ public class Item {
         return this.name;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     public void setId(String id) {
         this.created = id;
     }

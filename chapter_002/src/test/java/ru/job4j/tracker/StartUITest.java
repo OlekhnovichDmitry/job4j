@@ -1,5 +1,4 @@
 package ru.job4j.tracker;
-
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -40,5 +39,4 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[1].getName(), is("Test name2"));
     }
-
 }

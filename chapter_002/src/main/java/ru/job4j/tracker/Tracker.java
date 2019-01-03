@@ -91,6 +91,7 @@ public class Tracker {
         if (indexId != -1) {
             System.arraycopy(items, indexId + 1, items, indexId, this.position - indexId);
             rightId = true;
+            this.position--;
         }
         return rightId;
     }
@@ -109,8 +110,7 @@ public class Tracker {
                 indexId++;
             }
         }
-        System.arraycopy(result, 0, result, 0, indexId);
-        return result;
+        return Arrays.copyOf(result, indexId);
     }
 
     /**

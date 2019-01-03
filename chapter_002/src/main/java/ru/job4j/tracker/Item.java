@@ -32,4 +32,10 @@ public class Item {
         this.created = id;
     }
 
+    // переопределение метода
+    @Override
+    public String toString() {
+        return "ID заявки: " + created + " . Имя заявки: " + name + " . Описание заявки " + description;
+    }
+
 }

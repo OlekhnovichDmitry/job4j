@@ -101,7 +101,7 @@ public class StartUI {
         Item[] item = this.tracker.findAll();
         for (int index = 0; index != item.length; index++) {
             if (item[index] != null) {
-                System.out.println(item[index].getId() + "  --  " + item[index].getName() + "  --  " + item[index].getDescription());
+                System.out.println(item[index]);
             }
         }
     }
@@ -117,6 +117,8 @@ public class StartUI {
         Item item = new Item(name, desc);
         if (this.tracker.replace(id, item)) {
             System.out.println(" ------ заявка отредактирована ------------ ");
+        } else {
+            System.out.println(" ------- заявка с данным ID нe найдена --------");
         }
     }
 
@@ -129,6 +131,8 @@ public class StartUI {
         boolean right = this.tracker.delete(id);
         if (right) {
             System.out.println(" ------ заявка удалена ------------ ");
+        } else {
+            System.out.println(" ------- заявка с данным ID нe найдена --------");
         }
     }
 
@@ -139,7 +143,11 @@ public class StartUI {
         System.out.println(" ------------ Поиск заявки по ID --------------");
         String id = this.input.ask("Введите Id заявки");
         Item item = this.tracker.findById(id);
-            System.out.println(item.getId() + "  --  " + item.getName() + "  --  " + item.getDescription());
+        if (item != null) {
+            System.out.println(item);
+        } else {
+            System.out.println(" ------------ указанный ID не найден  --------------");
+        }
     }
 
     /**
@@ -149,11 +157,11 @@ public class StartUI {
         System.out.println(" ------------ Поиск заявки по имени --------------");
         String name = this.input.ask("Введите имя заявки :");
         Item[] item = this.tracker.findByName(name);
-        for (int index = 0; index != item.length; index++) {
-            if (item[index] != null) {
-                System.out.println(item[index].getId() + "  --  " + item[index].getName() + "  --  " + item[index].getDescription());
+            for (int index = 0; index != item.length; index++) {
+                if (item[index] != null) {
+                    System.out.println(item[index]);
+                }
             }
-        }
     }
 
     /**
